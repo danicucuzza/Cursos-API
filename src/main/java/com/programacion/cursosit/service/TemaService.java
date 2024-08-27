@@ -1,10 +1,12 @@
 package com.programacion.cursosit.service;
 
+import com.programacion.cursosit.model.Curso;
 import com.programacion.cursosit.model.Tema;
 import com.programacion.cursosit.repository.ITemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,5 +47,18 @@ public class TemaService implements ITemaService{
         return iTemaRepository.findAllById(ids);
     }
 
+    @Override
+    public List<Tema> findTemaByName(String palabra) {
+        String palabraLower = palabra.toLowerCase();
+        List<Tema> listaTemas = iTemaRepository.findAll();
+        List<Tema> listaTemasFiltrados = new ArrayList<>();
 
+        for (Tema tema : listaTemas) {
+            String textoComparar = tema.getNombre();
+            if (textoComparar != null && textoComparar.toLowerCase().contains(palabraLower)) {
+                listaTemasFiltrados.add(tema);
+            }
+        }
+        return listaTemasFiltrados;
+    }
 }

@@ -8,24 +8,27 @@ import java.util.List;
 
 public interface ICursoService {
 
-    //TRAER TODOS LOS CURSOS
+    //OBTENER TODOS LOS CURSOS
     public List<Curso> getCursos();
 
-    //DAR DE ALTA UN CURSO
+    //GUARDAR UN NUEVO CURSO
     public void saveCurso (Curso curso);
 
-    //ELIMINAR UN CURSO
+    //ELIMINAR UN CURSO POR ID
     public void deleteCurso (Long id_curso);
 
-    //BUSCAR 1 SOLO CURSO
+    //BUSCAR UN CURSO POR ID
     public Curso findCurso (Long id_curso);
 
-    //EDITAR UN CURSO
+    //EDITAR UN CURSO EXISTENTE
     public void editCurso(Curso curso);
 
+    //BUSCAR CURSO POR NOMBRE (PALABRA CLAVE)
     public List<Curso> findCursoByName (String palabra);
 
+    //OBTENER TEMAS DE UN CURSO POR ID
     public CursoTemaDTO temasByCurso (Long id_curso);
 
+    //AGREGAR TEMAS A UN CURSO EXISTENTE
     public Curso addTemasInCurso (Long id_curso, List<Long> temaIds);
 }

@@ -1,5 +1,6 @@
 package com.programacion.cursosit.controller;
 
+import com.programacion.cursosit.model.Curso;
 import com.programacion.cursosit.model.Tema;
 import com.programacion.cursosit.service.ITemaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,15 @@ public class TemaController {
     public Tema editTema(@RequestBody Tema tema){
         iTemaService.editTema(tema);
         return iTemaService.findTema(tema.getId_tema());
+    }
+
+    @GetMapping("/traerids")
+    public List<Tema> getTemasByIds(@RequestParam List<Long> ids) {
+        return iTemaService.getTemasByIds(ids);
+    }
+
+    @GetMapping("/buscar/palabra")
+    public List<Tema> findTemaByName(@RequestParam String palabra) {
+        return iTemaService.findTemaByName(palabra);
     }
 }
