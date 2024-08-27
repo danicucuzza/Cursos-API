@@ -39,12 +39,17 @@ public class CursoController {
     }
 
     @GetMapping("/buscar/palabra")
-    public List<Curso> findCursoForName(@RequestParam String palabra) {
+    public List<Curso> findCursoByName(@RequestParam String palabra) {
         return iCursoService.findCursoByName(palabra);
     }
 
     @GetMapping("/temas/{id_curso}")
     public CursoTemaDTO temaByCurso (@PathVariable Long id_curso) {
         return iCursoService.temasByCurso(id_curso);
+    }
+
+    @PostMapping("/asociartemas/{id_curso}")
+    public Curso addTemaInCurso(@PathVariable Long id_curso, @RequestBody List<Long> temaIds) {
+        return iCursoService.addTemasInCurso(id_curso, temaIds);
     }
 }

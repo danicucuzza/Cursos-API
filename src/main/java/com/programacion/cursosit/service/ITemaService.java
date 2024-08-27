@@ -20,4 +20,6 @@ public interface ITemaService {
 
     //EDITAR TEMA
     public void editTema (Tema tema);
+
+    List<Tema> getTemasByIds(List<Long> ids);
 }

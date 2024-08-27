@@ -2,6 +2,7 @@ package com.programacion.cursosit.service;
 
 import com.programacion.cursosit.dto.CursoTemaDTO;
 import com.programacion.cursosit.model.Curso;
+import com.programacion.cursosit.model.Tema;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface ICursoService {
     public List<Curso> findCursoByName (String palabra);
 
     public CursoTemaDTO temasByCurso (Long id_curso);
+
+    public Curso addTemasInCurso (Long id_curso, List<Long> temaIds);
 }

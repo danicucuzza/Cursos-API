@@ -39,4 +39,11 @@ public class TemaService implements ITemaService{
     public void editTema(Tema tema) {
         this.saveTema(tema);
     }
+
+    @Override
+    public List<Tema> getTemasByIds(List<Long> ids) {
+        return iTemaRepository.findAllById(ids);
+    }
+
+
 }
