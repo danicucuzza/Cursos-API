@@ -5,6 +5,7 @@ import com.programacion.cursosit.repository.ICursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,5 +39,20 @@ public class CursoService implements ICursoService{
     @Override
     public void editCurso(Curso curso) {
         this.saveCurso(curso);
+    }
+
+    @Override
+    public List<Curso> findCursoForName(String palabra) {
+        String palabraLower = palabra.toLowerCase();
+        List<Curso> listaCursos = iCursoRepository.findAll();
+        List<Curso> listaCursosFiltrados = new ArrayList<>();
+
+        for (Curso curso : listaCursos) {
+            String textoComparar = curso.getNombre();
+            if (textoComparar != null && textoComparar.toLowerCase().contains(palabraLower)) {
+                listaCursosFiltrados.add(curso);
+            }
+        }
+        return listaCursosFiltrados;
     }
 }

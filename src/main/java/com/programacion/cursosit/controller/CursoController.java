@@ -14,15 +14,15 @@ public class CursoController {
     @Autowired
     private ICursoService iCursoService;
 
-    @GetMapping("/traer")
-    public List<Curso> getCursos() {
-        return iCursoService.getCursos();
-    }
-
     @PostMapping("/crear")
     public String crearCurso(@RequestBody Curso curso){
         iCursoService.saveCurso(curso);
         return "El curso fue creado correctamente";
+    }
+
+    @GetMapping("/traer")
+    public List<Curso> getCursos() {
+        return iCursoService.getCursos();
     }
 
     @DeleteMapping("/eliminar/{id}")
@@ -35,5 +35,10 @@ public class CursoController {
     public Curso editCurso(@RequestBody Curso curso) {
         iCursoService.editCurso(curso);
         return iCursoService.findCurso(curso.getId_curso());
+    }
+
+    @GetMapping("/buscar/palabra")
+    public List<Curso> findCursoForName(@RequestParam String palabra) {
+        return iCursoService.findCursoForName(palabra);
     }
 }

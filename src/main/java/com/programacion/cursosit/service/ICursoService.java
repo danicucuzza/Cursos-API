@@ -20,4 +20,6 @@ public interface ICursoService {
 
     //EDITAR UN CURSO
     public void editCurso(Curso curso);
+
+    public List<Curso> findCursoForName (String palabra);
 }

@@ -17,7 +17,7 @@ public class Curso {
     private String modalidad;
     private String fecha_finalizacion;
 
-    @OneToMany
+    @OneToMany (mappedBy = "curso")
     private List<Tema> listaDeTemas;
 
     public Curso() {
