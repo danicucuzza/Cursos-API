@@ -1,5 +1,6 @@
 package com.programacion.cursosit.service;
 
+import com.programacion.cursosit.dto.CursoTemaDTO;
 import com.programacion.cursosit.model.Curso;
 
 import java.util.List;
@@ -21,5 +22,7 @@ public interface ICursoService {
     //EDITAR UN CURSO
     public void editCurso(Curso curso);
 
-    public List<Curso> findCursoForName (String palabra);
+    public List<Curso> findCursoByName (String palabra);
+
+    public CursoTemaDTO temasByCurso (Long id_curso);
 }

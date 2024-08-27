@@ -1,5 +1,6 @@
 package com.programacion.cursosit.controller;
 
+import com.programacion.cursosit.dto.CursoTemaDTO;
 import com.programacion.cursosit.model.Curso;
 import com.programacion.cursosit.service.ICursoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +33,18 @@ public class CursoController {
     }
 
     @PutMapping("/editar")
-    public Curso editCurso(@RequestBody Curso curso) {
+    public String editCurso(@RequestBody Curso curso) {
         iCursoService.editCurso(curso);
-        return iCursoService.findCurso(curso.getId_curso());
+        return "Curso editado Correctamente";
     }
 
     @GetMapping("/buscar/palabra")
     public List<Curso> findCursoForName(@RequestParam String palabra) {
-        return iCursoService.findCursoForName(palabra);
+        return iCursoService.findCursoByName(palabra);
+    }
+
+    @GetMapping("/temas/{id_curso}")
+    public CursoTemaDTO temaByCurso (@PathVariable Long id_curso) {
+        return iCursoService.temasByCurso(id_curso);
     }
 }

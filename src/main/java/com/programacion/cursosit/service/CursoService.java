@@ -1,5 +1,6 @@
 package com.programacion.cursosit.service;
 
+import com.programacion.cursosit.dto.CursoTemaDTO;
 import com.programacion.cursosit.model.Curso;
 import com.programacion.cursosit.repository.ICursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,10 @@ public class CursoService implements ICursoService{
         this.saveCurso(curso);
     }
 
+
+
     @Override
-    public List<Curso> findCursoForName(String palabra) {
+    public List<Curso> findCursoByName(String palabra) {
         String palabraLower = palabra.toLowerCase();
         List<Curso> listaCursos = iCursoRepository.findAll();
         List<Curso> listaCursosFiltrados = new ArrayList<>();
@@ -54,5 +57,15 @@ public class CursoService implements ICursoService{
             }
         }
         return listaCursosFiltrados;
+    }
+
+    @Override
+    public CursoTemaDTO temasByCurso(Long id_curso) {
+        CursoTemaDTO cursoTemaDTO = new CursoTemaDTO();
+        Curso curso = this.findCurso(id_curso);
+        cursoTemaDTO.setNombreCurso(curso.getNombre());
+        cursoTemaDTO.setListaTemas(curso.getListaDeTemas());
+
+        return cursoTemaDTO;
     }
 }
