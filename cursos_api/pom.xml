@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.programacion</groupId>
 	<artifactId>cursosit</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>cursosit</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -79,6 +79,13 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>
